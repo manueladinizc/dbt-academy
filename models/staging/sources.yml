@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: sap_adw
+    database: dbt-project-1-431420
+    schema: sap_adw
+    tables:
+
+      - name: address
+        description: Address information for customers, employees, and vendors
+        columns:
+          - name: addressid
