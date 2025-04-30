@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dim_personcreditcard
+    description: Person credit card information
+    columns:
+      - name: sk_person_credit_card
+        description: Surrogate key for the person credit card
+        data_tests:
+          - unique
+          - not_null
+
+      - name: credit_card_id
+        description: Unique identifier for the credit card
+        data_tests:
+          - unique
+          - not_null
+
+      - name: card_type
+        description: Type of credit card
+        data_tests:
+          - not_null

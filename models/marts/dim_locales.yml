@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: dim_locales
+    description: Adventureworks location information
+    columns:
+      - name: sk_locales
+        description: Surrogate key for the ship-to address
+        data_tests:
+          - unique
+          - not_null
+
+      - name: address_id
+        description: Unique identifier for the address
+        data_tests:
+          - not_null
+
+      - name: city
+        description: City of the address
+
+      - name: state_province_name
+        description: Name of the state or province
+        data_tests:
+          - not_null
+
+      - name: state_province_code
+        description: Code of the state or province
+
+      - name: country_region_name
+        description: Name of the country or region
+        data_tests:
+          - not_null
+
+      - name: country_region_code
+        description: Code of the country or region
+
+      - name: territory_name
+        description: Name of the sales territory
+        data_tests:
+          - not_null
+
+      - name: geographic_group
+        description: Geographic group associated with the sales territory
+        data_test:
+          - not_null

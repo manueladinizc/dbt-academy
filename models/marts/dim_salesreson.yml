@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: dim_salesreason
+    description: Table of customer purchase reasons
+    columns:
+      - name: sk_sales_reason
+        description: Surrogate key for the sales order id
+        data_tests:
+          - not_null
+
+      - name: sales_order_id
+        description: Unique identifier for each sales order
+        data_tests:
+          - not_null
+
+      - name: sales_reason_id
+        description: Identifier for the reason associated with the sales order
+        data_test:
+          - unique
+          - not_null
+
+      - name: sales_reason_description
+        description: Description of the sales reason
+        data_tests:
+          - not_null
+
+      - name: reason_type
+        description: Type of reason associated with the sales order
+        data_tests:
+          - not_null
+

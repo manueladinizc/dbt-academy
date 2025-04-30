@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: dim_dates
+    description: Model that generates a date table with detailed information such as day, month, year, and month name in pt-BR.
+    columns:
+      - name: date_full
+        description: Complete date in the format YYYY-MM-DD.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: day_param
+        description: Day of the month, extracted from the date.
+        data_tests:
+          - not_null
+          
+      - name: month_param
+        description: Month of the year, extracted from the date.
+        data_tests:
+          - not_null
+      - name: month_name
+        description: Month name in Portuguese, based on the month number.
+        data_tests:
+          - not_null
+          - accepted_values:
+              values:
+                - 'January'
+                - 'February'
+                - 'March'
+                - 'April'
+                - 'May'
+                - 'June'
+                - 'July'
+                - 'August'
+                - 'September'
+                - 'October'
+                - 'November'
+                - 'December'
+      - name: year_param
+        description: Year, extracted from the date.
+        data_tests:
+          - not_null
