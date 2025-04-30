@@ -1,0 +1,119 @@
+version: 2
+
+models:
+  - name: fct_ordersales
+    description: Fact table containing details of sales orders, including information about orders, products, customers, credit cards, and sales reasons
+    columns:
+      - name: sales_order_id
+        description: Unique identifier for the sales order
+        data_tests:
+          - not_null
+
+      - name: fk_customer
+        description: Foreign key referencing the customer in the customer dimension table
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customer')
+              field: sk_customer
+
+      - name: fk_locales
+        description: Foreign key referencing the locale in the locales dimension table
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_locales')
+              field: sk_locales
+
+      - name: fk_person_credit_card
+        description: Foreign key referencing the credit card in the credit card dimension table
+        data_tests:
+          - relationships:
+              to: ref('dim_personcreditcard')
+              field: sk_person_credit_card
+
+      - name: fk_sales_reason
+        description: Surrogate key for the sales reason in the sales reason dimension table
+        data_tests:
+          - relationships:
+              to: ref('dim_salesreason')
+              field: sk_sales_reason
+
+      - name: fk_date_full
+        description: Foreign key referencing the date in the dates dimension table
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_dates')
+              field: sk_date_full
+
+      - name: fk_product
+        description: Foreign key referencing the product in the products dimension table
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_products')
+              field: sk_product
+
+      - name: order_product_qty
+        description: Quantity of products in the order
+        data_tests:
+          - not_null
+
+      - name: unit_price
+        description: Unit price of the product in the order
+        data_tests:
+          - not_null
+
+      - name: unit_price_discount
+        description: Discount applied to the unit price of the product
+        data_tests:
+          - not_null
+
+      - name: total_price
+        description: Total price of the order before discount
+        data_tests:
+          - not_null
+
+      - name: total_price_with_discounted
+        description: Total price of the order after discount is applied
+        data_tests:
+          - not_null
+
+      - name: order_status
+        description: Status of the order
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: [Pending, Completed, Shipped, Cancelled]
+
+      - name: tax_amount
+        description: Amount of tax applied to the order
+        data_tests:
+          - not_null
+
+      - name: freight
+        description: Freight cost for the order
+        data_tests:
+          - not_null
+
+      - name: transaction_amount
+        description: Total transaction amount of the order
+        data_tests:
+          - not_null
+
+      - name: order_date
+        description: Date when the order was placed
+        data_tests:
+          - not_null
+
+      - name: store_id
+        description: Identifier for the store where the order was placed
+
+      - name: store_name
+        description: Name of the store where the order was placed
+
+      - name: online_order_flag
+        description: Flag indicating if the order was placed online
+        data_tests:
+          - not_null

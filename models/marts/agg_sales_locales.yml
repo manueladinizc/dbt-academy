@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: agg_sales_locales
+    description: Aggregated sales data by country region
+    columns:
+      - name: sk_locales
+        description: Surrogate key for the locale
+        data_tests:
+          - not_null
+          - unique
+      - name: country_region_name
+        description: Name of the country region
+        data_tests:
+          - not_null
+      - name: total_transaction_amount
+        description: Total transaction amount for the country region
+        data_tests:
+          - not_null
+      - name: total_price
+        description: Total revenue before discounts for the country region
+        data_tests:
+          - not_null
+      - name: total_price_with_discounted
+        description: Total revenue with discounts applied for the country region
+        data_tests:
+          - not_null
+      - name: total_order_qty
+        description: Total quantity of products sold by the country region
+        data_tests:
+          - not_null

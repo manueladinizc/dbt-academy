@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: agg_sales_seller
+    description: Aggregated table summarizing sales by seller, including total transactions, total revenue, discounted revenue, and total products sold
+    columns:
+
+      - name: total_transaction_amount
+        description: Total transaction amount for the seller
+        data_tests:
+          - not_null
+      - name: total_price
+        description: Total revenue before discounts for the seller
+        data_tests:
+          - not_null
+      - name: total_price_with_discounted
+        description: Total revenue with discounts applied for the seller
+        data_tests:
+          - not_null
+      - name: total_order_qty
+        description: Total quantity of products sold by the seller
+        data_tests:
+          - not_null
+      - name: first_name
+        description: First name of the seller
+        data_tests:
+          - not_null
+      - name: last_name
+        description: Last name of the seller
+        data_tests:
+          - not_null
+      - name: job_title
+        description: Job title of the seller
+        data_tests:
+          - not_null
+      - name: gender
+        description: Gender of the seller
+        data_tests:
+          - not_null
+      - name: order_year
+        description: order year
+        data_test:
+          - not_null
+      - name: sales_order_id
+        description: Order ID
+        data_tests:
+          - not_null
