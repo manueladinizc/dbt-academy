@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: sap_adw
-    database: dbt-project-1-431420
-    schema: sap_adw
+  - name: raw_adventure_works
+    database: SNOWFLAKE
+    schema: raw_adventure_works
     tables:
 
       - name: address
