@@ -27,8 +27,8 @@ with
             dcs.online_order_flag,
             c.person_id,
             c.territory_id,
-            store_id,
-            store_name,
+            c.store_id,
+            s.store_name,
             case
                 when dcs.online_order_flag = True then 'online'
                 else 'in-store'
