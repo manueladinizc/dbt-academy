@@ -4,7 +4,7 @@
 
 - [Diagrama Conceitual](documents/conceptual_diagram_adw.pdf)
 - [Arquivo do Dashboard](documents/adw_bi.pbix)
-- [Vídeo de Apresentação](https://youtu.be/iivDvnnTS80)
+- [Vídeo de Apresentação](https://youtu.be/lRF0pSNLX-Q)
 
 ## Resumo do Projeto
 
