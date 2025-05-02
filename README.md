@@ -10,7 +10,7 @@
 
 Este projeto para a Adventure Works tem como objetivo transformar a análise de dados da empresa por meio de duas etapas principais:
 
-1. **Modelagem Dimensional**: Criação de um Data Warehouse utilizando o Google BigQuery e dbt, organizando dados de vendas e produção.
+1. **Modelagem Dimensional**: Criação de um Data Warehouse utilizando o snowflake e dbt, organizando dados de vendas e produção.
 2. **Visualização de Dados**: Desenvolvimento de dashboards interativos para análise visual dos dados.
 
 ## Divisão do Projeto
@@ -52,7 +52,7 @@ Este projeto para a Adventure Works tem como objetivo transformar a análise de 
 1. **Clone o repositório**:
     ```bash
     git clone https://github.com/manueladinizc/dbt-academy.git
-    cd analytics-dbt
+    cd dbt-academy
     ```
 
 2. **Crie um ambiente virtual**:
@@ -66,9 +66,9 @@ Este projeto para a Adventure Works tem como objetivo transformar a análise de 
     pip install -r requirements.txt
     ```
 
-4. **Configure as credencia do projeto** no arquivo `profiles.yml`.
+4. **Configure as credenciais do projeto** no arquivo `profiles.yml`.
 
-6. **Execute e teste o modelo**:
+6. **Execute e teste**:
     ```bash
     dbt run
     dbt test
