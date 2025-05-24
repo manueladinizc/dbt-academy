@@ -3,8 +3,9 @@
 ## Documentos
 
 - [Diagrama Conceitual](documents/conceptual_diagram_adw.pdf)
-- [Arquivo do Dashboard](documents/adw_bi.pbix)
+- [Arquivo do Dashboard](documents/adw_bi_v2.pbix)
 - [Vídeo de Apresentação](https://youtu.be/lRF0pSNLX-Q)
+- [Vídeo para novo painel](https://youtu.be/L6ANsK7hQHY)
 
 ## Resumo do Projeto
 
