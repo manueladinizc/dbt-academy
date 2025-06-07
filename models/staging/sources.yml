@@ -208,12 +208,44 @@ sources:
             data_tests:
               - not_null
 
+      - name: creditcard
+        description: Customer credit card information
+        columns:
+          - name: creditcardid
+            description: Primary key for creditcard records
+            data_tests:
+              - unique
+              - not_null
+          - name: cardtype
+            description: Credit card type
+            data_tests:
+              - not_null
+
+      - name: personcreditcard
+        description: Cross-reference table mapping people and credit cards
+        columns:
+          - name: businessentityid
+            description: Primary key for person records
+            data_tests:
+              - not_null
+              - relationships:
+                  to: ref('person')
+                  field: businessentityid
+          - name: creditcardid
+            description: Foreign key to creditcard
+            data_tests:
+              - not_null
+              - relationships:
+                  to: ref('creditcard')
+                  field: creditcardid
+
       - name: salesreason
         description: Customer purchase reasons
         columns:
           - name: salesreasonid
             description: Primary key for salesreason records
             data_tests:
+              - unique
               - not_null
           - name: name
             description: Sales reason description
@@ -238,36 +270,6 @@ sources:
               - relationships:
                   to: ref('salesreason')
                   field: salesreasonid
-
-      - name: creditcard
-        description: Customer credit card information
-        columns:
-          - name: creditcardid
-            description: Primary key for creditcard records
-            data_tests:
-              - unique
-          - name: cardtype
-            description: Credit card type
-            data_tests:
-              - not_null
-
-      - name: personcreditcard
-        description: Cross-reference table mapping people and credit cards
-        columns:
-          - name: businessentityid
-            description: Primary key for person records
-            data_tests:
-              - not_null
-              - relationships:
-                  to: ref('person')
-                  field: businessentityid
-          - name: creditcardid
-            description: Foreign key to creditcard
-            data_tests:
-              - not_null
-              - relationships:
-                  to: ref('creditcard')
-                  field: creditcardid
 
       - name: salesorderheader
         description: General sales order information

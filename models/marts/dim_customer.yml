@@ -41,5 +41,8 @@ models:
       - name: store_name
         description: Name of the store associated with the customer
 
-      - name: online_order_flag
-        description: Flag indicating if the customer is an online order customer
+      - name: order_channel
+        description: Channel through which the order was placed (online or in-store)
+        data_tests:
+          - accepted_values:
+              values: ['online', 'in-store']

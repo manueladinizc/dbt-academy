@@ -7,7 +7,7 @@ with
 
     , personcreditcard as (
         select *
-        from {{ ref('stg_sap__personcreditcard') }}
+        from {{ ref('int_personcreditcard') }}
     )
 
     , final_transformation as (

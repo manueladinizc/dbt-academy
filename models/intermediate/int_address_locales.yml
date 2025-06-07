@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: int_address_locales
+    description: >
+      Intermediate model that enriches ship-to address IDs from sales orders with address, state, country, and sales territory information, providing a geographic context for each address used in sales orders.
+    columns:
+      - name: ship_to_address_id
+        description: Unique identifier for the shipping address from the sales order header.
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_sap__salesorderheader')
+              field: ship_to_address_id
+      - name: address_id
+        description: Unique identifier for the address.
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sap__address')
+              field: address_id
+      - name: city
+        description: City of the address.
+        data_tests:
+          - not_null
+      - name: state_province_name
+        description: Name of the state or province for the address.
+        data_tests:
+          - not_null
+      - name: state_province_code
+        description: Code of the state or province for the address.
+        data_tests:
+          - not_null
+      - name: country_region_name
+        description: Name of the country or region for the address.
+        data_tests:
+          - not_null
+      - name: country_region_code
+        description: Code of the country or region for the address.
+        data_tests:
+          - not_null
+      - name: territory_name
+        description: Name of the sales territory for the address.
+        data_tests:
+          - not_null
+      - name: geographic_group
+        description: Geographic group classification for the sales territory.
+        data_tests:
+          - not_null 
