@@ -8,7 +8,7 @@ with
     salesorderheadersalesreason as (
         select
             *
-        from {{ ref('stg_sap__salesorderheadersalesreason') }}
+        from {{ ref('int_salesorderheadersalesreason') }}
     ),
 
     final_transformation as (

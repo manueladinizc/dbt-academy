@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: int_customer_order_info
+    description: >
+      Intermediate model that combines customer information with their order channel preferences
+      and store details. This model serves as a foundation for customer dimension by joining
+      sales order header data with customer and store information.
+    
+    columns:
+      - name: customer_id
+        description: Unique identifier for the customer from the sales order header
+        data_tests:
+          - not_null
+          - unique
+
+      - name: online_order_flag
+        description: Boolean flag indicating whether the order was placed online (True) or in-store (False)
+        data_tests:
+          - not_null
+
+      - name: person_id
+        description: Reference to the person table, linking to customer's personal information
+        data_tests:
+          - relationships:
+              to: ref('stg_sap__person')
+              field: business_entity_id
+
+      - name: territory_id
+        description: Reference to the sales territory where the customer is located
+        data_tests:
+          - relationships:
+              to: ref('stg_sap__salesterritory')
+              field: territory_id
+
+      - name: store_id
+        description: Reference to the store where the customer made their purchase (if applicable)
+        data_tests:
+          - relationships:
+              to: ref('stg_sap__store')
+              field: business_entity_id
+
+      - name: store_name
+        description: Name of the store where the customer made their purchase
+
+      - name: order_channel
+        description: >
+          Derived field indicating the channel through which the order was placed.
+          Possible values are 'online' or 'in-store'
+        data_tests:
+          - accepted_values:
+              values: ['online', 'in-store']

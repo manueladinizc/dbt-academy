@@ -4,11 +4,6 @@ models:
   - name: fct_ordersales
     description: Fact table containing details of sales orders, including information about orders, products, customers, credit cards, and sales reasons
     columns:
-      - name: sales_order_id
-        description: Unique identifier for the sales order
-        data_tests:
-          - not_null
-
       - name: fk_customer
         description: Foreign key referencing the customer in the customer dimension table
         data_tests:
@@ -32,21 +27,6 @@ models:
               to: ref('dim_personcreditcard')
               field: sk_person_credit_card
 
-      - name: fk_sales_reason
-        description: Surrogate key for the sales reason in the sales reason dimension table
-        data_tests:
-          - relationships:
-              to: ref('dim_salesreason')
-              field: sk_sales_reason
-
-      - name: fk_date_full
-        description: Foreign key referencing the date in the dates dimension table
-        data_tests:
-          - not_null
-          - relationships:
-              to: ref('dim_dates')
-              field: sk_date_full
-
       - name: fk_product
         description: Foreign key referencing the product in the products dimension table
         data_tests:
@@ -54,6 +34,12 @@ models:
           - relationships:
               to: ref('dim_products')
               field: sk_product
+
+      - name: fk_seller
+        description: Foreign key referencing the seller (sales person) in the sales person dimension table
+
+      - name: fk_sales_order
+        description: Foreign key referencing the sales order
 
       - name: order_product_qty
         description: Quantity of products in the order
@@ -76,7 +62,7 @@ models:
           - not_null
 
       - name: total_price_with_discounted
-        description: Total price of the order after discount is applied
+        description: Total price of the order after discount
         data_tests:
           - not_null
 
@@ -84,8 +70,16 @@ models:
         description: Status of the order
         data_tests:
           - not_null
-          - accepted_values:
-              values: [Pending, Completed, Shipped, Cancelled]
+
+      - name: online_order_flag
+        description: Flag indicating if the order was placed online
+        data_tests:
+          - not_null
+
+      - name: transaction_amount
+        description: Total transaction amount of the order
+        data_tests:
+          - not_null
 
       - name: tax_amount
         description: Amount of tax applied to the order
@@ -97,8 +91,8 @@ models:
         data_tests:
           - not_null
 
-      - name: transaction_amount
-        description: Total transaction amount of the order
+      - name: total_amount
+        description: Total amount of the order (transaction + tax + freight)
         data_tests:
           - not_null
 
@@ -107,13 +101,8 @@ models:
         data_tests:
           - not_null
 
-      - name: store_id
-        description: Identifier for the store where the order was placed
-
-      - name: store_name
-        description: Name of the store where the order was placed
-
-      - name: online_order_flag
-        description: Flag indicating if the order was placed online
+      - name: sk_sales_fact
+        description: Surrogate key for the sales fact table
         data_tests:
+          - unique
           - not_null

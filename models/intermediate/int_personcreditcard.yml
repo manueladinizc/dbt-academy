@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: int_personcreditcard
+    description: >
+      Intermediate model that joins personcreditcard and creditcard tables, providing credit card details for each business entity.
+    columns:
+      - name: business_entity_id
+        description: Unique identifier for the business entity (person) who owns the credit card.
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sap__personcreditcard')
+              field: business_entity_id
+      - name: credit_card_id
+        description: Unique identifier for the credit card.
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sap__creditcard')
+              field: credit_card_id
+      - name: card_type
+        description: Type of the credit card (e.g., Amex, Visa, MasterCard).
+        data_tests:
+          - not_null

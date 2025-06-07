@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: int_product_hierarchy
+    description: >
+      Intermediate model that enriches product IDs from sales order details with product, subcategory, and category information, providing a product hierarchy for each product sold.
+    columns:
+      - name: product_id
+        description: Unique identifier for the product from the sales order detail.
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_sap__product')
+              field: product_id
+      - name: product_name
+        description: Name of the product.
+        data_tests:
+          - not_null
+      - name: product_number
+        description: Product number or SKU.
+        data_tests:
+          - not_null
+      - name: product_subcategory_name
+        description: Name of the product subcategory.
+        data_tests:
+          - not_null
+      - name: product_category_name
+        description: Name of the product category.
+        data_tests:
+          - not_null

@@ -10,6 +10,11 @@ models:
           - unique
           - not_null
 
+      - name: locales_id
+        description: Unique identifier for the locale (ship-to address id)
+        data_tests:
+          - not_null
+
       - name: address_id
         description: Unique identifier for the address
         data_tests:
@@ -41,5 +46,5 @@ models:
 
       - name: geographic_group
         description: Geographic group associated with the sales territory
-        data_test:
+        data_tests:
           - not_null
